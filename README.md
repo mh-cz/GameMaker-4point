@@ -1,2 +1,3 @@
 # 4point
-4-point
+A four point image manipulator.
+
