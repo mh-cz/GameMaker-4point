@@ -7,16 +7,16 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 		
 		var line_line_intersection_point = function(x1, y1, x2, y2, x3, y3, x4, y4) {
 			
-		    var a1 = y2 - y1;
-	        var b1 = x1 - x2;
-	        var c1 = a1 * x1 + b1 * y1;
+			var a1 = y2 - y1;
+			var b1 = x1 - x2;
+			var c1 = a1 * x1 + b1 * y1;
 			
-	        var a2 = y4 - y3;
-	        var b2 = x3 - x4;
-	        var c2 = a2 * x3 + b2 * y3;
+			var a2 = y4 - y3;
+			var b2 = x3 - x4;
+			var c2 = a2 * x3 + b2 * y3;
 			
-	        var delta = a1 * b2 - a2 * b1;
-	        return [(b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta];
+			var delta = a1 * b2 - a2 * b1;
+			return [(b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta];
 		}
 		
 		var mid = line_line_intersection_point(x1, y1, x4, y4, x2, y2, x3, y3);
