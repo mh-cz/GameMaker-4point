@@ -115,10 +115,6 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					break;
 			}
 		}
-		else {
-			ds_grid_destroy(g);
-			return false;
-		}
 	}
 	else {
 		for(var gx = 0; gx < segments+1; gx++) {
