@@ -53,46 +53,46 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 				case 0: // 0: <, <, tp 010, bt 232
 					if t < b dx = 1+(1-dx);
 					if l < r dy = 1+(1-dy);
-	
+					
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, dy);
+						var f = power(gx / segments, 0.5 + dy * 0.5);
 						tp = [ p[0][0] + (p[1][0] - p[0][0]) * f, p[0][1] + (p[1][1] - p[0][1]) * f ];
 						bt = [ p[2][0] + (p[3][0] - p[2][0]) * f, p[2][1] + (p[3][1] - p[2][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, dx);
+							var f = power(gy / segments, 0.5 + dx * 0.5);
 							g[# gx,gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
 					break;
-	
+				
 				case 1: // 1: <, >, tp 101, bt 323
 					if t < b dx = 1+(1-dx);
 					if l > r dy = 1+(1-dy);
 			
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, dy);
+						var f = power(gx / segments, 0.5 + dy * 0.5);
 						tp = [ p[1][0] + (p[0][0] - p[1][0]) * f, p[1][1] + (p[0][1] - p[1][1]) * f ];
 						bt = [ p[3][0] + (p[2][0] - p[3][0]) * f, p[3][1] + (p[2][1] - p[3][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, dx);
+							var f = power(gy / segments, 0.5 + dx * 0.5);
 							g[# segments-gx,gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
 					break;
-		
+				
 				case 2: // 2: >, <, bt 010, tp 232
 					if t > b dx = 1+(1-dx);
 					if l < r dy = 1+(1-dy);
-	
+					
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, dy);
+						var f = power(gx / segments, 0.5 + dy * 0.5);
 						bt = [ p[0][0] + (p[1][0] - p[0][0]) * f, p[0][1] + (p[1][1] - p[0][1]) * f ];
 						tp = [ p[2][0] + (p[3][0] - p[2][0]) * f, p[2][1] + (p[3][1] - p[2][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, dx);
+							var f = power(gy / segments, 0.5 + dx * 0.5);
 							g[# gx,segments-gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
@@ -103,12 +103,12 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					if l > r dy = 1+(1-dy);
 		
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, dy);
+						var f = power(gx / segments, 0.5 + dy * 0.5);
 						bt = [ p[1][0] + (p[0][0] - p[1][0]) * f, p[1][1] + (p[0][1] - p[1][1]) * f ];
 						tp = [ p[3][0] + (p[2][0] - p[3][0]) * f, p[3][1] + (p[2][1] - p[3][1]) * f ];
 	
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, dx);
+							var f = power(gy / segments, 0.5 + dx * 0.5);
 							g[# segments-gx,segments-gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
