@@ -30,7 +30,7 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					nearest = i;
 				}
 			}
-			
+			 
 			var t = point_distance(p[0][0], p[0][1], p[1][0], p[1][1]);
 			var b = point_distance(p[2][0], p[2][1], p[3][0], p[3][1]);
 			var r = point_distance(p[1][0], p[1][1], p[3][0], p[3][1]);
