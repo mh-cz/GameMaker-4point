@@ -1,4 +1,4 @@
-function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5, perspective = true, z = depth) {
+function draw_4point(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5, perspective = true, z = depth) {
 	
 	var p = [[x1,y1], [x2,y2], [x3,y3], [x4, y4]];
 	var g = ds_grid_create(segments+1, segments+1);
