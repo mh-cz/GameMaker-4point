@@ -8,8 +8,8 @@ A four point image manipulator
 - x3, y3 - point 3
 - x4, y4 - point 4
 - tex - texture, sprite_get_texture(..), surface_get_texture(..) etc.
-- segments - the more, the better quality, [optional, default is 5]
-- perspective - fake perspective, [optional, default is true]
-- z - depth, [optional, default is object's depth]
+- segments - the more, the better quality, **[optional, default is 4]
+- perspective - fake perspective, **[optional, default is true]
+- z - depth, **[optional, default is object's depth]
 
 ![sBez názvu](https://user-images.githubusercontent.com/68820052/164703365-83053361-f832-4510-9318-b107d2d4b375.png)
