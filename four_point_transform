@@ -141,7 +141,6 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 4,
 	var vb = vertex_create_buffer()
 
 	var uvstep = 1/segments;
-	var z = 0;
 	
 	vertex_begin(vb, vf);
 	
