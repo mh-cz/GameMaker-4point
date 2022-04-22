@@ -2,7 +2,7 @@
 A four point image manipulator for GameMaker 2.3+
 
 ## How to use
-```four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments*, perspective*, z*)```
+```draw_4point(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments*, perspective*, z*)```
 - x1, y1 - point 1
 - x2, y2 - point 2
 - x3, y3 - point 3
