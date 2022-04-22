@@ -1,5 +1,5 @@
 # 4point
-A four point image manipulator
+A four point image manipulator for GameMaker 2.3+
 ######
 The faked perspective might glitch a bit if some points are way too far or close to each other
 
