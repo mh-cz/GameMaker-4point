@@ -16,7 +16,7 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 			var c2 = a2 * x3 + b2 * y3;
 			
 			var delta = a1 * b2 - a2 * b1;
-			return [ (b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta ];
+			return [(b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta];
 		}
 		
 		var mid = line_line_intersection_point(x1, y1, x4, y4, x2, y2, x3, y3);
@@ -39,10 +39,6 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 			var dx = sqrt(sqrt(min(t,b) / max(t,b)));
 			var dy = sqrt(sqrt(min(l,r) / max(l,r)));
 			var tp = [], bt = [];
-			
-			show_debug_message(min(t,b) / max(t,b));
-			
-			draw_text(0, 0, nearest);
 			
 			// 0 1
 			// 2 3
@@ -193,11 +189,10 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 	
 	vertex_end(vb);
 	vertex_submit(vb, pr_trianglelist, tex);
-		
+	
 	vertex_format_delete(vf);
 	vertex_delete_buffer(vb);
 	ds_grid_destroy(g);
 	
 	return true;
 }
-
