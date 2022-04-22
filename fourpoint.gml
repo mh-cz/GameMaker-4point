@@ -261,8 +261,10 @@ function fourpoint(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5, perspectiv
 		vertex_submit(vb, pr_trianglelist, tex);
 	}
 	
-	static transform = function(xrot = 0, yrot = 0, zrot = 0, xscale = 1, yscale = 1, zscale = 1) {
+	static draw_transformed = function(xrot = 0, yrot = 0, zrot = 0, xscale = 1, yscale = 1, zscale = 1) {
 		matrix_set(matrix_world, matrix_build(0, 0, 0, xrot, yrot, zrot, xscale, yscale, zscale));
+		draw();
+		matrix_set(matrix_world, matrix_build_identity());
 	}
 	
 	static destroy = function() {
