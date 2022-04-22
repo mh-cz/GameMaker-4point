@@ -2,7 +2,7 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 	
 	var p = [[x1,y1], [x2,y2], [x3,y3], [x4, y4]];
 	var g = ds_grid_create(segments+1, segments+1);
-	 
+	
 	if perspective {
 		
 		var line_line_intersection_point = function(x1, y1, x2, y2, x3, y3, x4, y4) {
@@ -16,7 +16,7 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 			var c2 = a2 * x3 + b2 * y3;
 			
 			var delta = a1 * b2 - a2 * b1;
-			return [(b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta];
+			return [ (b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta ];
 		}
 		
 		var mid = line_line_intersection_point(x1, y1, x4, y4, x2, y2, x3, y3);
@@ -30,15 +30,19 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					nearest = i;
 				}
 			}
-			 
+			
 			var t = point_distance(p[0][0], p[0][1], p[1][0], p[1][1]);
 			var b = point_distance(p[2][0], p[2][1], p[3][0], p[3][1]);
 			var r = point_distance(p[1][0], p[1][1], p[3][0], p[3][1]);
 			var l = point_distance(p[0][0], p[0][1], p[2][0], p[2][1]);
 			
-			var dx = min(t,b) / max(t,b);
-			var dy = min(l,r) / max(l,r);
+			var dx = sqrt(sqrt(min(t,b) / max(t,b)));
+			var dy = sqrt(sqrt(min(l,r) / max(l,r)));
 			var tp = [], bt = [];
+			
+			show_debug_message(min(t,b) / max(t,b));
+			
+			draw_text(0, 0, nearest);
 			
 			// 0 1
 			// 2 3
@@ -48,6 +52,7 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 			// 2: >, <, bt 010, tp 232
 			// 3: >, >, bt 101, tp 323
 			
+			
 			switch(nearest) {
 		
 				case 0: // 0: <, <, tp 010, bt 232
@@ -55,12 +60,12 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					if l < r dy = 1+(1-dy);
 					
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, 0.5 + dy * 0.5);
+						var f = power(gx / segments, dy);
 						tp = [ p[0][0] + (p[1][0] - p[0][0]) * f, p[0][1] + (p[1][1] - p[0][1]) * f ];
 						bt = [ p[2][0] + (p[3][0] - p[2][0]) * f, p[2][1] + (p[3][1] - p[2][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, 0.5 + dx * 0.5);
+							var f = power(gy / segments, dx);
 							g[# gx,gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
@@ -71,12 +76,12 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					if l > r dy = 1+(1-dy);
 			
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, 0.5 + dy * 0.5);
+						var f = power(gx / segments, dy);
 						tp = [ p[1][0] + (p[0][0] - p[1][0]) * f, p[1][1] + (p[0][1] - p[1][1]) * f ];
 						bt = [ p[3][0] + (p[2][0] - p[3][0]) * f, p[3][1] + (p[2][1] - p[3][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, 0.5 + dx * 0.5);
+							var f = power(gy / segments, dx);
 							g[# segments-gx,gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
@@ -87,12 +92,12 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					if l < r dy = 1+(1-dy);
 					
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, 0.5 + dy * 0.5);
+						var f = power(gx / segments, dy);
 						bt = [ p[0][0] + (p[1][0] - p[0][0]) * f, p[0][1] + (p[1][1] - p[0][1]) * f ];
 						tp = [ p[2][0] + (p[3][0] - p[2][0]) * f, p[2][1] + (p[3][1] - p[2][1]) * f ];
 			
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, 0.5 + dx * 0.5);
+							var f = power(gy / segments, dx);
 							g[# gx,segments-gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
@@ -103,12 +108,12 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 					if l > r dy = 1+(1-dy);
 		
 					for(var gx = 0; gx < segments+1; gx++) {
-						var f = power(gx / segments, 0.5 + dy * 0.5);
+						var f = power(gx / segments, dy);
 						bt = [ p[1][0] + (p[0][0] - p[1][0]) * f, p[1][1] + (p[0][1] - p[1][1]) * f ];
 						tp = [ p[3][0] + (p[2][0] - p[3][0]) * f, p[3][1] + (p[2][1] - p[3][1]) * f ];
 	
 						for(var gy = 0; gy < segments+1; gy++) {
-							var f = power(gy / segments, 0.5 + dx * 0.5);
+							var f = power(gy / segments, dx);
 							g[# segments-gx,segments-gy] = [ tp[0] + (bt[0] - tp[0]) * f, tp[1] + (bt[1] - tp[1]) * f ];
 						}
 					}
@@ -195,3 +200,4 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 	
 	return true;
 }
+
