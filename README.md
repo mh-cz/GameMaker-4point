@@ -10,7 +10,7 @@ Faked perspective might glitch a bit if two points are way too far or close to e
 - x3, y3 - point 3
 - x4, y4 - point 4
 - tex - texture, sprite_get_texture(..), surface_get_texture(..) etc.
-- segments - the more, the better quality, **[optional, default is 4]**
+- segments - the more, the better quality, **[optional, default is 5]**
 - perspective - faked perspective, **[optional, default is true]**
 - z - depth, **[optional, default is object's depth]**
 
