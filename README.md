@@ -14,4 +14,6 @@ Faked perspective might glitch a bit if two points are way too far or close to e
 - perspective - faked perspective, **[optional, default is true]**
 - z - depth, **[optional, default is object's depth]**
 
-![sBez názvu](https://user-images.githubusercontent.com/68820052/164703365-83053361-f832-4510-9318-b107d2d4b375.png)
+<p align="center">
+  <img width="200" height="200" src="https://user-images.githubusercontent.com/68820052/164703365-83053361-f832-4510-9318-b107d2d4b375.png">
+</p>
