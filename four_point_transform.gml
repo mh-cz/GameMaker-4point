@@ -48,7 +48,6 @@ function four_point_transform(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5,
 			// 2: >, <, bt 010, tp 232
 			// 3: >, >, bt 101, tp 323
 			
-			
 			switch(nearest) {
 		
 				case 0: // 0: <, <, tp 010, bt 232
