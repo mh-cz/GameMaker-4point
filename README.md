@@ -1,5 +1,7 @@
 # 4point
 A four point image manipulator for GameMaker 2.3+
+- No shaders
+- No 3D stuff
 
 ## How to use
 ```draw_4point(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments*, perspective*, z*)```
