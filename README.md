@@ -4,6 +4,7 @@ A four point image manipulator for GameMaker 2.3+
 - No 3D stuff
 
 ## How to use
+Call `fourpoint_init()` when the game starts
 ##### Create:
 ```fp = new fourpoint(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments*, perspective*, z*)```
 ##### Update:
