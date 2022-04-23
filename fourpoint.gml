@@ -109,8 +109,8 @@ function fourpoint(x1, y1, x2, y2, x3, y3, x4, y4, tex, segments = 5, perspectiv
 				var r = point_distance(x2, y2, x4, y4);
 				var l = point_distance(x1, y1, x3, y3);
 				
-				var dx = sqrt(sqrt(min(t,b) / max(t,b)));
-				var dy = sqrt(sqrt(min(l,r) / max(l,r)));
+				var dx = power(min(t,b) / max(t,b), 0.25);
+				var dy = power(min(l,r) / max(l,r), 0.25);
 				var tp = [], bt = [];
 			
 				// 0 1
